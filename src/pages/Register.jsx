@@ -116,11 +116,13 @@ const Register = () => {
       name: values.name,
       email: values.email,
       phone: values.phone,
+      password: values.password, // Store password for verification on login
       company: values.company || 'Not Specified',
       isAgency: values.isAgency,
       description: 'Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam'
     };
     localStorage.setItem('registeredUser', JSON.stringify(userProfile));
+    localStorage.setItem('currentUser', JSON.stringify(userProfile));
     localStorage.setItem('lastEnteredEmail', values.email);
 
     // Show Success Toast

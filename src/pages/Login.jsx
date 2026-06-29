@@ -73,27 +73,44 @@ const Login = () => {
       return;
     }
 
-    setIsLoading(true);
+    const savedUserJson = localStorage.getItem('registeredUser');
+    const savedUser = savedUserJson ? JSON.parse(savedUserJson) : null;
 
-    // Save current email for next login
+    // Check if logging in as the registered user
+    if (savedUser && savedUser.email.toLowerCase() === values.email.toLowerCase()) {
+      if (savedUser.password && savedUser.password !== values.password) {
+        setErrors({ password: 'Incorrect password for this email' });
+        setTouched({ password: true });
+        return;
+      }
+      
+      setIsLoading(true);
+      localStorage.setItem('lastEnteredEmail', values.email);
+      
+      setTimeout(() => {
+        localStorage.setItem('currentUser', JSON.stringify(savedUser));
+        setIsLoading(false);
+        navigate('/account');
+      }, 1000);
+      return;
+    }
+
+    setIsLoading(true);
     localStorage.setItem('lastEnteredEmail', values.email);
 
-    // Fake loading delay of 1 second
+    // If no registered user exists or logging in with new email, create placeholder data
     setTimeout(() => {
-      // If no registered user exists, initialize with placeholder data
-      const registeredUser = localStorage.getItem('registeredUser');
-      if (!registeredUser) {
-        const placeholderUser = {
-          name: 'Marry Doe',
-          email: values.email || 'Marry@Gmail.Com',
-          phone: '9876543210',
-          company: 'PopX Agency',
-          isAgency: 'Yes',
-          description: 'Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam'
-        };
-        localStorage.setItem('registeredUser', JSON.stringify(placeholderUser));
-      }
-
+      const placeholderUser = {
+        name: 'Marry Doe',
+        email: values.email || 'Marry@Gmail.Com',
+        password: values.password,
+        phone: '9876543210',
+        company: 'PopX Agency',
+        isAgency: 'Yes',
+        description: 'Lorem Ipsum Dolor Sit Amet, Consetetur Sadipscing Elitr, Sed Diam Nonumy Eirmod Tempor Invidunt Ut Labore Et Dolore Magna Aliquyam Erat, Sed Diam'
+      };
+      localStorage.setItem('registeredUser', JSON.stringify(placeholderUser));
+      localStorage.setItem('currentUser', JSON.stringify(placeholderUser));
       setIsLoading(false);
       navigate('/account');
     }, 1000);

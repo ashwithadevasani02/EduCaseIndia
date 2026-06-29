@@ -7,7 +7,7 @@ const Account = () => {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
   const [user, setUser] = useState(() => {
-    const userData = localStorage.getItem('registeredUser');
+    const userData = localStorage.getItem('currentUser');
     return userData ? JSON.parse(userData) : null;
   });
 
@@ -31,14 +31,21 @@ const Account = () => {
       reader.onloadend = () => {
         const updatedUser = { ...user, avatar: reader.result };
         setUser(updatedUser);
-        localStorage.setItem('registeredUser', JSON.stringify(updatedUser));
+        localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+        
+        // Also update the database if emails match
+        const savedUserJson = localStorage.getItem('registeredUser');
+        const savedUser = savedUserJson ? JSON.parse(savedUserJson) : null;
+        if (savedUser && savedUser.email.toLowerCase() === updatedUser.email.toLowerCase()) {
+          localStorage.setItem('registeredUser', JSON.stringify(updatedUser));
+        }
       };
       reader.readAsDataURL(file);
     }
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('registeredUser');
+    localStorage.removeItem('currentUser');
     setUser(null);
     navigate('/');
   };
