@@ -145,7 +145,7 @@ const Register = () => {
     errors.password;
 
   return (
-    <div className="flex-1 flex flex-col justify-between p-6 bg-[#F8F9FA] relative overflow-hidden animate-fade-in">
+    <div className="flex-1 flex flex-col justify-between p-6 bg-[#F8F9FA] relative animate-fade-in">
       {/* Success Toast */}
       <Toast
         message="Registration successful! Redirecting..."

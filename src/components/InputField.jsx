@@ -22,7 +22,7 @@ const InputField = React.forwardRef(({
   const hasError = touched && error;
 
   return (
-    <div className="w-full mb-4 text-left">
+    <div className="w-full mb-3 text-left">
       <div className="relative rounded-md">
         {/* Input Control */}
         <input
