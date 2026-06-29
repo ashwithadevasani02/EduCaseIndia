@@ -1,4 +1,3 @@
-
 const Button = ({
   children,
   type = 'button',
@@ -10,9 +9,7 @@ const Button = ({
   ...props
 }) => {
   const isButtonDisabled = disabled || isLoading;
-
   const baseStyles = 'w-full py-4 px-4 rounded-xl text-sm font-semibold transition-all duration-150 flex items-center justify-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2';
-  
   const variants = {
     primary: 'bg-[#6C25FF] text-white hover:bg-[#5B1BE0] active:scale-[0.98] focus:ring-[#6C25FF] shadow-sm',
     secondary: 'bg-[#E1D5FF] text-[#1D2939] hover:bg-[#D5C4FF] active:scale-[0.98] focus:ring-[#BCA4FF]',
@@ -20,7 +17,6 @@ const Button = ({
   };
 
   const selectedVariant = isButtonDisabled ? variants.disabled : variants[variant];
-
   return (
     <button
       type={type}

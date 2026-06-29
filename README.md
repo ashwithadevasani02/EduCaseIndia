@@ -108,11 +108,6 @@ npm run build
 ---
 
 ## 🎨 Design Decisions & Implementation Notes
-
-### 💡 The Yellow Circles (Adobe XD Annotations)
-- **Important Note**: Looking at the design screenshots, you may notice yellow circles with numbers inside (e.g., 10, 8, 6, etc.) on the Welcome page. These are **Adobe XD comment annotation markers** added during design review, and are **not** part of the visual application user interface. 
-- **Implementation**: These annotation circles are intentionally omitted from our final application rendering to achieve visual correctness and present a clean, production-ready interface.
-
 ### 🧠 No Context / State Libraries
 State is managed locally using React state hooks. We utilized **lazy state initialization** (`useState(() => value)`) to load and query data from `localStorage` synchronously during setup. This prevents double rendering, enhances speed, and strictly avoids complex third-party tools like Redux or Context API, making the codebase beginner-friendly.
 

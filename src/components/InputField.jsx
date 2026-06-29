@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
-
 const InputField = React.forwardRef(({
   label,
   type = 'text',
@@ -37,13 +36,13 @@ const InputField = React.forwardRef(({
           placeholder={placeholder}
           maxLength={maxLength}
           className={`block w-full rounded-lg border bg-[#F8F9FA] px-3.5 py-3.5 text-sm text-[#1D2939] placeholder:text-gray-400 focus:outline-none transition-all duration-150
-            ${hasError 
-              ? 'border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500' 
+            ${hasError
+              ? 'border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500'
               : 'border-[#CBCBCB] focus:border-[#6C25FF] focus:ring-1 focus:ring-[#6C25FF]'
             } ${isPassword ? 'pr-10' : ''}`}
           {...props}
         />
-        
+
         {/* Floating Label sitting on border */}
         <label
           htmlFor={name}
@@ -76,7 +75,7 @@ const InputField = React.forwardRef(({
         <span className={`text-[11px] min-h-[14px] leading-tight ${hasError ? 'text-red-500 font-medium' : 'text-gray-500'}`}>
           {hasError ? error : ''}
         </span>
-        
+
         {showCharCount && maxLength && (
           <span className="text-[11px] text-gray-400 font-mono">
             {value.length} / {maxLength}

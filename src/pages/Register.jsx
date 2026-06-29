@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import InputField from '../components/InputField';
 import Button from '../components/Button';
 import Toast from '../components/Toast';
-
 const Register = () => {
   const navigate = useNavigate();
   const [values, setValues] = useState({
@@ -55,7 +54,7 @@ const Register = () => {
       // Allow only digits
       const digitsOnly = value.replace(/\D/g, '');
       setValues((prev) => ({ ...prev, phone: digitsOnly }));
-      
+
       if (touched.phone) {
         const err = validate('phone', digitsOnly);
         setErrors((prev) => ({ ...prev, phone: err }));
