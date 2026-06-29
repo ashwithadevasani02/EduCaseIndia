@@ -19,41 +19,41 @@ A high-fidelity, polished, and mobile-first clone of the PopX design build with 
 
 ---
 
-## ✨ Features & UX Details
+##  Features & UX Details
 
-### 🔄 Dynamic Page Transitions
+###  Dynamic Page Transitions
 Subtle fade-in page entry animations triggered automatically when shifting between routes.
 
-### ✍️ Premium Floating Label Inputs
+### Premium Floating Label Inputs
 - **Interactive borders**: Embedded labels resting directly on the border lines.
 - **State styling**: Colors animate cleanly (Purple for active/valid, Red for invalid, Gray for default).
 - **Password visibility toggles**: Quick hide/show icons in password inputs.
 
-### 🚦 Live Validations & Helper Text
+###  Live Validations & Helper Text
 Form fields validate dynamically as the user types, displaying neat validation messages and helper text:
 - Email formatting checks.
 - Password minimum length verification.
 - Telephone digits-only input filtering (filters out non-digits immediately).
 - Character counter: Live `x / 50` character length counter for the Company Name.
 
-### ⏱️ Loading Spinner States
+### Loading Spinner States
 Clicking "Login" or "Create Account" triggers a 1-second asynchronous loading spinner block to simulate network delay, enhancing UI feedback before navigating.
 
-### 🔔 SUCCESS Toast Notifications
+### SUCCESS Toast Notifications
 Temporary success toast alerts appear on registration completion before moving pages.
 
-### 👤 Avatar Customization & Initials Fallback
+### Avatar Customization & Initials Fallback
 - **Initials generator**: Displays user initials (e.g., Ashwitha Devasani → AD) on a stylized circle background if no custom avatar is present.
 - **Image upload capability**: A live base64 encoder updates and persists customized profile pictures directly inside `localStorage` upon clicking the camera icon overlay.
 
-### 💾 Data Persistence & Prefill
+### Data Persistence & Prefill
 - Saved profile settings remain persistent after reloading the page.
 - Prefills the last-used email address on the Login page using cache values.
 - Friendly "No Account Found" fallback state card displays when navigating to Account Settings without being logged in.
 
 ---
 
-## 📂 Folder Structure
+##  Folder Structure
 
 ```
 src/
@@ -76,7 +76,7 @@ src/
 
 ---
 
-## 🚀 Installation & Running Locally
+##  Installation & Running Locally
 
 Follow these instructions to run the application on your local machine:
 
@@ -107,16 +107,16 @@ npm run build
 
 ---
 
-## 🎨 Design Decisions & Implementation Notes
-### 🧠 No Context / State Libraries
+##  Design Decisions & Implementation Notes
+###  No Context / State Libraries
 State is managed locally using React state hooks. We utilized **lazy state initialization** (`useState(() => value)`) to load and query data from `localStorage` synchronously during setup. This prevents double rendering, enhances speed, and strictly avoids complex third-party tools like Redux or Context API, making the codebase beginner-friendly.
 
-### ⚡ CSS Transitions vs Framer Motion
+###  CSS Transitions vs Framer Motion
 We chose native CSS animations (`@keyframes`) inside Tailwind rather than adding a heavy animation library. This avoids peer dependency conflicts (especially in newer React versions) and remains highly readable, making it easy to explain.
 
 ---
 
-## ☁️ Deployment Instructions for Vercel
+##  Deployment Instructions for Vercel
 
 To host this project on Vercel:
 
